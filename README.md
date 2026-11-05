@@ -34,6 +34,8 @@ The deployment uses the existing **default VPC** and its networking rather than 
 | `cloud-init.yaml` | Defines the software installation, webpage creation, and service startup steps. |
 | `README.md` | Explains the architecture, workflow, testing, and lessons learned. |
 
+![Terraform Main Configuration](screenshots/maintf.png)
+
 ## Cloud-Init Configuration
 
 The configuration uses cloud-init's `#cloud-config` YAML format. The main directives are:
@@ -45,6 +47,8 @@ The configuration uses cloud-init's `#cloud-config` YAML format. The main direct
 - `write_files` — creates the custom HTML entry point at `/var/www/html/index.html` with read access for the web server.
 - `defer: true` — writes that file after package installation.
 - `runcmd` — makes sure NGINX is enabled and running.
+
+![Cloud-Init Configuration](screenshots/Cloud-Init%20Configuration.png)
 
 The webpage displays:
 
@@ -81,6 +85,8 @@ Review the plan before applying. In this deployment, the plan proposed **5 resou
 3. Check that the custom **Hello from Terraform & Cloud-init!** message appears.
 
 The webpage was successfully served after deployment without manually installing NGINX or editing files on the instance.
+
+![Testing the Deployment](screenshots/Testing%20the%20Deployment.png)
 
 If shell access is available, the following commands can help verify the instance configuration:
 
