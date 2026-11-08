@@ -8,21 +8,8 @@ Terraform creates the AWS infrastructure. Cloud-init, which is available on the 
 
 ## Architecture
 
-```text
-Terraform
-  |
-  +-- EC2 instance (t3.micro, public IPv4 address)
-  |     |
-  |     +-- User data: cloud-init.yaml
-  |           +-- Update/upgrade packages
-  |           +-- Install NGINX
-  |           +-- Create /var/www/html/index.html
-  |           +-- Enable and start NGINX
-  |
-  +-- Security group
-        +-- Inbound: HTTP (TCP 80) from 0.0.0.0/0
-        +-- Outbound: HTTP (TCP 80) and HTTPS (TCP 443)
-```
+![Architecture](screenshots/Architecture.png)
+
 
 The deployment uses the existing **default VPC** and its networking rather than creating a new VPC, subnet, internet gateway, or route table. The configuration was deployed in **AWS `eu-north-1`**.
 
